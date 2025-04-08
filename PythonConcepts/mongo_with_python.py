@@ -114,3 +114,33 @@ cursor = collection.aggregate(pipeline)
 for document in cursor: 
     print(document)
     break
+
+# Combine multiple pipelines
+pipeline = [
+    {"$match": {"age": {"$ne": 40}}},
+    {"$group": {"_id": "$name", "name":{"$push": "$name"},"count": {"$sum": 1}}},
+    {"$sort": {"count": -1}},
+    {"$limit": 2},
+    {"$skip": 1}
+]
+cursor = collection.aggregate(pipeline)
+for document in cursor:
+    print(document)
+    break
+
+# Complex pipeline
+pipeline.append(    
+    {"$project": {"_id": 0, "name": 1, "count": 1}},
+)
+cursor = collection.aggregate(pipeline)
+for document in cursor:
+    print(document)
+    break
+
+#-------------------------------------------------------------------------------
+# Aggregation with $lookup
+#-------------------------------------------------------------------------------
+
+teachers = collection.find({"age": {"$ne": 40}})
+students = collection.find({"age": {"$gt": 40}})
+
