@@ -72,3 +72,48 @@ print(Child.__mro__) # to understand the order Python uses to resolve methods in
 """
 super() is used to call a method from the parent class (or superclass) without explicitly naming it.
 """
+
+
+
+"""
+More About Method Resolution Order (MRO)
+
+
+If no super():
+    MRO is used to find the first match → only one method executes.
+
+If all use super() (cooperative):
+    MRO determines the order in which all methods are executed,
+    as each one hands off to the next.
+
+"""
+
+# MRO with super()
+class A:
+    def m(self): print("A")
+
+class B(A):
+    def m(self): print("B"); super().m()
+
+class C(A):
+    def m(self): print("C"); super().m()
+
+class D(B, C):
+    def m(self): print("D"); super().m()
+
+D().m()
+# D.__mro__
+
+
+# MRO without super()
+class A:
+    def show(self): print("A")
+
+class B:
+    def show(self): print("B")
+
+class C(A, B):
+    pass
+
+C().show()
+C.__mro__
