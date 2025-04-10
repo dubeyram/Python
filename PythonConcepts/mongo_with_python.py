@@ -9,9 +9,9 @@ db = client["MongoLearning"]
 collection = db["teachers"]
 
 
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 # Inserting Documents
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 
 teacher = {
     "name": "John Doe",
@@ -23,24 +23,24 @@ teacher = {
 result = collection.insert_one(teacher)
 print(result)
 
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 # Updating Documents
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 
 update = {"$set": {"age": 41}}
 result = collection.update_one({"name": "John Doe"}, update)
 print(result)
 
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 # Deleting Documents
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 
 result = collection.delete_one({"name": "John Doe"})
 print(result)
 
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 # Querying Documents
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 
 # Find all documents
 cursor = collection.find()
@@ -73,7 +73,7 @@ for document in cursor:
     break
 
 
-#Find documents with specific field value and return only the "_id" and "name" fields
+# Find documents with specific field value and return only the "_id" and "name" fields
 cursor = collection.find({"age": 41}, {"_id": 0})
 for document in cursor:
     print(document)
@@ -83,15 +83,15 @@ for document in cursor:
 cursor = collection.find({"age": 41}, {"_id": 0}).limit(2).skip(1)
 for document in cursor:
     print(document)
-    
 
-#-------------------------------------------------------------------------------
+
+# -------------------------------------------------------------------------------
 # Aggregation
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 
 pipeline = [
     {"$match": {"age": {"$ne": 40}}},
-    {"$group": {"_id": "$name" ,"count": {"$sum": 1}}},
+    {"$group": {"_id": "$name", "count": {"$sum": 1}}},
     {"$sort": {"count": -1}},
 ]
 
@@ -111,17 +111,17 @@ for document in cursor:
 # Skip the first document
 pipeline.append({"$skip": 1})
 cursor = collection.aggregate(pipeline)
-for document in cursor: 
+for document in cursor:
     print(document)
     break
 
 # Combine multiple pipelines
 pipeline = [
     {"$match": {"age": {"$ne": 40}}},
-    {"$group": {"_id": "$name", "name":{"$push": "$name"},"count": {"$sum": 1}}},
+    {"$group": {"_id": "$name", "name": {"$push": "$name"}, "count": {"$sum": 1}}},
     {"$sort": {"count": -1}},
     {"$limit": 2},
-    {"$skip": 1}
+    {"$skip": 1},
 ]
 cursor = collection.aggregate(pipeline)
 for document in cursor:
@@ -129,7 +129,7 @@ for document in cursor:
     break
 
 # Complex pipeline
-pipeline.append(    
+pipeline.append(
     {"$project": {"_id": 0, "name": 1, "count": 1}},
 )
 cursor = collection.aggregate(pipeline)
@@ -137,10 +137,9 @@ for document in cursor:
     print(document)
     break
 
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 # Aggregation with $lookup
-#-------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------
 
 teachers = collection.find({"age": {"$ne": 40}})
 students = collection.find({"age": {"$gt": 40}})
-

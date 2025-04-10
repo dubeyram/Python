@@ -12,12 +12,13 @@ When multiple parents have same method name, python used the Method Resolution O
 
 """
 
+
 class Parent1:
     def __init__(self):
         self.name = "Parent1"
 
     def print_name(self):
-        print("Parent 1",self.name)
+        print("Parent 1", self.name)
 
 
 class Parent2:
@@ -25,7 +26,7 @@ class Parent2:
         self.name = "Parent2"
 
     def print_name(self):
-        print("Parent2",self.name)
+        print("Parent2", self.name)
 
 
 class Child(Parent1, Parent2):
@@ -42,7 +43,6 @@ if __name__ == "__main__":
     child.print_name()
 
 
-
 """
 ----------------------------------------Example for Multilevel Inheritance----------------------------------------
 
@@ -50,29 +50,34 @@ Inheritance that forns a chain -- a class inherits from a class, which itself in
 
 """
 
+
 class Grandfather:
     def __str__(self) -> str:
         print("Class Grandfather")
         return "Class GrandFather"
 
+
 class Father(Grandfather):
     def __str__(self) -> str:
         print("Class Father")
         return super().__str__()
-    
+
+
 class Child(Father, Grandfather):
     def __str__(self) -> str:
         print("Child Class")
         return super().__str__()
 
+
 child = Child()
 print(child)
-print(Child.__mro__) # to understand the order Python uses to resolve methods in inheritance.
+print(
+    Child.__mro__
+)  # to understand the order Python uses to resolve methods in inheritance.
 
 """
 super() is used to call a method from the parent class (or superclass) without explicitly naming it.
 """
-
 
 
 """
@@ -88,32 +93,49 @@ If all use super() (cooperative):
 
 """
 
+
 # MRO with super()
 class A:
-    def m(self): print("A")
+    def m(self):
+        print("A")
+
 
 class B(A):
-    def m(self): print("B"); super().m()
+    def m(self):
+        print("B")
+        super().m()
+
 
 class C(A):
-    def m(self): print("C"); super().m()
+    def m(self):
+        print("C")
+        super().m()
+
 
 class D(B, C):
-    def m(self): print("D"); super().m()
+    def m(self):
+        print("D")
+        super().m()
+
 
 D().m()
-# D.__mro__
+print(D.__mro__)
 
 
 # MRO without super()
 class A:
-    def show(self): print("A")
+    def show(self):
+        print("A")
+
 
 class B:
-    def show(self): print("B")
+    def show(self):
+        print("B")
+
 
 class C(A, B):
     pass
+
 
 C().show()
 C.__mro__
