@@ -84,7 +84,7 @@ except Exception as e:
 
 
 """
------------------------------------------------@<property_name>.staticmethod decorator -----------------------------------------------
+-----------------------------------------------@staticmethod decorator -----------------------------------------------
 Used when the method does not use self or cls.
 
 Utility/helper methods related to the class.
@@ -92,16 +92,24 @@ Utility/helper methods related to the class.
 
 
 class Math:
+
+    def __init__(self) -> None:
+        pass
     @staticmethod
     def add(x, y):
         return x + y
 
+    def sub(self, x, y):
+        return x - y
 
-print(Math.add(5, 7))
+
+print(Math.add(15, 17))
+subtract = Math()
+print(subtract.sub(15, 17))
 
 
 """
------------------------------------------------@<property_name>.classmethod decorator -----------------------------------------------
+-----------------------------------------------@classmethod decorator -----------------------------------------------
 Used when method needs access to the class (cls) not the instance.
 
 Often used as alternative constructors or factory methods.
