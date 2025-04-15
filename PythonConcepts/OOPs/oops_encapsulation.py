@@ -5,7 +5,8 @@ This is a file that contains the code for the bank account.
 
 class BankAccount:
     """
-    This is a class that defines the bank account.
+    This is a class that defines the bank account. (Public, Protected, and Private attributes.)
+    Deposit, Withdraw, and Retrieve Balance
     """
 
     def __init__(self, account_number, balance):
@@ -29,9 +30,18 @@ class BankAccount:
         else:
             print("Invalid withdrawal amount.")
 
+    @staticmethod
+    def default_balance():
+        """Added static property to show default message."""
+        return "Current balance is too low."
+    
+    @property
     def get_balance(self):
         """Public method to access private balance"""
-        return f"Current balance: ₹{self.__balance}"
+        if self.__balance:
+            return f"Current balance: ₹{self.__balance}"
+        return self.default_balance()
+        
 
 
 # Creating an object
@@ -47,8 +57,9 @@ print(account._bank_name)  # ✅ Allowed (but not recommended): HDFC Bank
 # print(account.__balance)  # ❌ AttributeError: 'BankAccount' object has no attribute '__balance'
 
 # Correct way to access private data
-print(account.get_balance())  # ✅ Allowed: Current balance: ₹5000
+# print(account.get_balance())  # ✅ Allowed: Current balance: ₹5000
 
 # Modifying balance using controlled methods
 account.deposit(2000)  # ✅ Deposited ₹2000. New balance: ₹7000
-account.withdraw(1000)  # ✅ Withdrew ₹1000. Remaining balance: ₹6000
+account.withdraw(7000)  # ✅ Withdrew ₹1000. Remaining balance: ₹6000
+print(account.get_balance)

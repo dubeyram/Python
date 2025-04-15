@@ -1,6 +1,6 @@
 """
 Decorator is a function that takes a function and returns a new function.
-It is used to add some functionality to the existing function.
+It is used to add some functionality to the existing function without modifying the existing function.
 """
 
 

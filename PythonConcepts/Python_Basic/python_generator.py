@@ -40,5 +40,21 @@ class GeneratorUseCase:
 
 
 genrator_usecase = GeneratorUseCase(n=13)
-fib = genrator_usecase.n_th_fibonacci()
-print(list(fib))
+# fib = genrator_usecase.n_th_fibonacci()
+# print(list(fib))
+
+
+gen  = (i for i in range(10))
+# print(type(gen))
+
+def gen_(gen):
+    for i in gen:
+        yield i
+
+i = gen_(gen)
+print(next(i))
+print(next(i))
+print(next(i))
+print(next(i))
+print(next(i))
+print(next(i))
