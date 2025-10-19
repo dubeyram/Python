@@ -97,3 +97,11 @@
 
 25. Magic Methods in Python
 - Magic methods (also known as dunder methods) are special methods in Python that start and end with double underscores (e.g., `__init__`, `__str__`, `__add__`). They allow you to define the behavior of your objects for built-in operations, such as initialization, string representation, and arithmetic operations.
+
+26. **What is a Virtual Environment in Python?**
+- A virtual environment is an isolated Python environment that allows you to manage dependencies for different projects separately. It helps avoid conflicts between packages and ensures that each project has its own set of libraries.
+
+27. **What is the difference between 'is' and '==' in Python?**
+- `is` checks for identity, meaning it checks whether two references point to the same object in memory.
+- `==` checks for equality, meaning it checks whether the values of two objects are the same, regardless of whether they are the same object in memory.
+
