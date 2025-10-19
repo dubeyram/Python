@@ -58,21 +58,22 @@
 - Django Auth is a built-in authentication system in Django that provides user authentication and authorization features. It includes user registration, login, logout, password management, and permissions.
 - Django Auth is highly customizable and can be extended to meet the specific needs of an application.
 
-14.  **What is the difference between values() and values_list() in Django QuerySets?**
+14. **What is the difference between values() and values_list() in Django QuerySets?**
 - `values()` returns a QuerySet of dictionaries, where each dictionary represents an object and contains the field names and their values.
 - `values_list()` returns a QuerySet of tuples, where each tuple contains the values of the specified fields for each object. It can be more efficient than `values()` when you only need specific fields.
 
-15. Select_related vs Prefetch_related
+15. **Select_related vs Prefetch_related**
 - `select_related()` is used for single-valued relationships (ForeignKey and OneToOneField) and performs a SQL join to retrieve related objects in a single query.
 - `prefetch_related()` is used for multi-valued relationships (ManyToManyField and reverse ForeignKey) and performs separate queries to retrieve related objects and then combines them in Python.
 - Using these methods appropriately can significantly reduce the number of database queries and improve performance.
 
-1.  How to implement Celery and Celery Beat in Django, Write step by step procedure along with code snippets?- Install Celery and a message broker (e.g., Redis) using pip:
-  ```bash
+16. **How to implement Celery and Celery Beat in Django, Write step by step procedure along with code snippets?**
+- Install Celery and a message broker (e.g., Redis) using pip:
+```bash
   pip install celery redis
   ```
 - Create a `celery.py` file in your Django project directory (same level as `settings.py`) and configure Celery:
-  ```python
+```python
   from __future__ import absolute_import, unicode_literals
   import os
   from celery import Celery
@@ -127,7 +128,8 @@
   celery -A your_project_name worker --loglevel=info
   celery -A your_project_name beat --loglevel=info
   ```
-16. How to implement Signals in Django, Write step by step procedure along with code snippets?- First, create a Django app if you don't have one already:
+17. **How to implement Signals in Django, Write step by step procedure along with code snippets?**
+- First, create a Django app if you don't have one already:
   ```bash
   python manage.py startapp myapp
   ```
@@ -176,7 +178,8 @@
 
   ```
 
-17. Write a sample Rest API using Django Rest Framework with code snippets?- First, install Django Rest Framework using pip:
+18. **Write a sample Rest API using Django Rest Framework with code snippets?**
+- First, install Django Rest Framework using pip:
   ```bash
   pip install djangorestframework
   ```
