@@ -250,3 +250,13 @@
   python manage.py runserver
   ```
 - You can now access the API at `http://127.0.0.1:8000/api/mymodel/`    and perform CRUD operations using HTTP methods (GET, POST, PUT, DELETE).
+
+
+19. CSRF Protection in Django
+- CSRF (Cross-Site Request Forgery) protection is a security measure implemented in Django to prevent unauthorized actions on behalf of authenticated users. Django includes built-in CSRF protection middleware that automatically adds CSRF tokens to forms and validates them on the server side.
+- To use CSRF protection in your Django views, ensure that the `CsrfViewMiddleware` is included in your `MIDDLEWARE` settings. In your HTML templates, include the `{% csrf_token %}` template tag within your form tags to generate the CSRF token.
+
+
+20. **Channels in Django**
+- Django Channels is an extension of Django that enables handling of WebSockets, long-lived connections, and background tasks. It allows Django to support real-time applications by providing asynchronous capabilities.
+- To use Django Channels, you need to install it via pip, configure your ASGI application, and set up routing for WebSocket connections. Channels work alongside Django's traditional request-response cycle, allowing you to build applications that require real-time updates, such as chat applications or live notifications.
