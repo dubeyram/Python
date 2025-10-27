@@ -32,13 +32,20 @@ class Book(LibraryManagementSystem):
     def list_books(self):
         return f"Total {len(self.books)} book is availiable in the Library."
 
+    def return_book(self, book):
+        if book in self._rented_books and self._rented_books.get(book) == f"Rented by {self.name}":
+            self.books.append(book)
+            return f"Return of book {book} is completed"
+
+
+
 b = Book(name="Ram", email="testing", books=[])
 
 print(b.add_book("1,2"))
 print(b.books)
 
-print(b.rent_book("1"))
-print(b.rent_book("1"))
+print(b.rent_book(1))
+print(b.return_book("1"))
 print(b.list_books())
 
 
