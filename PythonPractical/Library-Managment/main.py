@@ -39,17 +39,13 @@ class Book(LibraryManagementSystem):
 
 
 
-b = Book(name="Ram", email="testing", books=[])
-
-print(b.add_book("1,2"))
-print(b.books)
-
-print(b.rent_book(1))
-print(b.return_book("1"))
-print(b.list_books())
-
-
-
 if __name__=="__main__":
-    print("")
+    b = Book(name="Ram", email="testing", books=[])
+
+    print(b.add_book("1,2"))
+    print(b.books)
+
+    print(b.rent_book(1))
+    print(b.return_book("1"))
+    print(b.list_books())
 
